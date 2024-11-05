@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  web:
+    build: ./rosatom_app/
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    environment:
+      - DJANGO_SETTINGS_MODULE=rosatom_app.settings
+      - PYTHONPATH=$(pwd)
+    command: python manage.py runserver 0.0.0.0:8000
